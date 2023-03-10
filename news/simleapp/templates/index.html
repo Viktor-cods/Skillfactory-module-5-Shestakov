@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% for statia in stat %}
+<p>{{ statia.title }} </p>
+<a href="{{ statia.get_absolute_url }}">Stat url</a>
+<p> {{ statia.date_pub }} </p>
+
+{% block title %}
+{% endblock %}
+{% endfor %}
+
+</body>
+</html>
