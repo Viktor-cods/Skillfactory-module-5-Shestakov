@@ -32,3 +32,19 @@
 32 for i in a:
        i.ratingAuthor
        i.authorUser.username
+
+
+
+
+       <a class="nav-link" href="{% url 'n_index' n.id %}">
+     def get_queryset(self):
+        queryset = super().get_queryset()
+        self.filterset = PostFilter(self.request.GET, queryset)
+        return self.filterset.qs
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filterset'] = self.filterset
+        context['time_now'] = datetime.utcnow()
+        return context
+    <td>{{ n.postCategory|censor }}</td>

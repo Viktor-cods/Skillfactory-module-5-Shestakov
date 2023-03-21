@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.db.models import Sum
 from django.db import models
 from django.shortcuts import reverse
+from django.core.validators import MinValueValidator
+from django.urls import reverse
 
 
 
@@ -55,8 +57,9 @@ class Post(models.Model):
     title=models.CharField(max_length=128)
     text=models.TextField()
     rating=models.SmallIntegerField(default=0)
-    date = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f'{self.title}'
 
     def like(self):
         self.rating+=1
@@ -89,6 +92,8 @@ class Comment(models.Model):
 
     def preview(self):
         return self.text[0:123]+'...'
+
+
 
 
 
